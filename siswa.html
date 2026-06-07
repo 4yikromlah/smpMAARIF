@@ -79,7 +79,7 @@
         <div style="display: flex; gap: 12px;">
             <button class="btn-tambah" onclick="openModal()"><i class="fas fa-plus-circle"></i> Tambah Siswa</button>
             <button class="btn-tambah" onclick="openImportModal()" style="background: linear-gradient(145deg, #3b82f6, #2563eb);"><i class="fas fa-upload"></i> Import Excel</button>
-            <a href="#" id="downloadTemplateBtn" class="btn-tambah" style="background: linear-gradient(145deg, #f59e0b, #d97706); text-decoration: none;"><i class="fas fa-download"></i> Download Template</a>
+            <button id="downloadTemplateBtn" class="btn-tambah" style="background: linear-gradient(145deg, #f59e0b, #d97706); cursor: pointer;"><i class="fas fa-download"></i> Download Template</button>
         </div>
     </div>
     
@@ -170,7 +170,6 @@
             document.getElementById('siswaAktif').innerText = siswaList.length;
             document.getElementById('totalKelas').innerText = kelasSet.size;
             
-            // Event hapus
             document.querySelectorAll('.btn-delete[data-id]').forEach(btn => {
                 btn.addEventListener('click', async (e) => {
                     e.preventDefault();
@@ -224,13 +223,37 @@
         document.getElementById('modalImport').classList.remove('active');
     }
     
+    // Fungsi download template menggunakan fetch (lebih handal)
+    async function downloadTemplate() {
+        try {
+            const response = await fetch(`${API_BASE}/api/siswa/template`, {
+                credentials: 'include'
+            });
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+            }
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'template_import_siswa.xlsx';
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            window.URL.revokeObjectURL(url);
+        } catch (err) {
+            console.error('Download error:', err);
+            alert('Gagal download template: ' + err.message + '\nPastikan backend berjalan dan endpoint /api/siswa/template tersedia.');
+        }
+    }
+    
     document.getElementById('downloadTemplateBtn').addEventListener('click', (e) => {
         e.preventDefault();
-        window.location.href = `${API_BASE}/api/siswa/template`;
+        downloadTemplate();
     });
     document.getElementById('templateLinkInModal').addEventListener('click', (e) => {
         e.preventDefault();
-        window.location.href = `${API_BASE}/api/siswa/template`;
+        downloadTemplate();
     });
     
     document.getElementById('formImport').addEventListener('submit', async (e) => {
