@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout - CBT System</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; background: #eef0f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .card { background: #eef0f5; border-radius: 48px; padding: 2rem; text-align: center; box-shadow: 20px 20px 40px #bebebe, -10px -10px 20px #ffffff; max-width: 400px; }
+        .card i { font-size: 3rem; color: #10b981; margin-bottom: 1rem; }
+        .card h2 { color: #2d2a4a; margin-bottom: 0.5rem; }
+        .card p { color: #5a4a7a; margin-bottom: 1.5rem; }
+        .btn { background: linear-gradient(145deg, #7d64a8, #5a3e7c); color: white; padding: 10px 28px; border-radius: 60px; text-decoration: none; display: inline-block; box-shadow: 8px 8px 16px #bebebe, -4px -4px 8px #ffffff; }
+        .btn:hover { transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+<div class="card">
+    <i class="fas fa-check-circle"></i>
+    <h2>Berhasil Logout</h2>
+    <p>Anda telah keluar dari sistem. Mengalihkan ke halaman login...</p>
+    <a href="login.html" class="btn">Kembali ke Login</a>
+</div>
+<script>
+    const API_BASE = 'http://localhost:3000';
+    fetch(`${API_BASE}/api/auth/logout`, { method: 'POST', credentials: 'include' }).finally(() => {
+        setTimeout(() => window.location.href = 'login.html', 2000);
+    });
+</script>
+</body>
+</html>

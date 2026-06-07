@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Export Nilai Excel - CBT System</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; background: #eef0f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .card { background: #eef0f5; border-radius: 48px; padding: 2rem; text-align: center; box-shadow: 20px 20px 40px #bebebe, -10px -10px 20px #ffffff; max-width: 500px; }
+        table { margin: 1rem auto; border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background: #eef0f5; }
+        .btn { background: linear-gradient(145deg, #10b981, #059669); color: white; border: none; padding: 10px 28px; border-radius: 60px; cursor: pointer; margin-top: 1rem; }
+    </style>
+</head>
+<body>
+<div class="card">
+    <h2><i class="fas fa-file-excel"></i> Export Nilai ke Excel</h2>
+    <table id="nilaiTable">
+        <thead><tr><th>No</th><th>Siswa</th><th>NIS</th><th>Kelas</th><th>Mata Pelajaran</th><th>Ujian</th><th>Nilai</th><th>Tanggal</th></tr></thead>
+        <tbody id="tableBody"></tbody>
+    </table>
+    <button class="btn" onclick="exportToExcel()"><i class="fas fa-download"></i> Download Excel</button>
+</div>
+<script>
+    const API_BASE = 'http://localhost:3000';
+    async function loadData() {
+        const res = await fetch(`${API_BASE}/api/rekap`, { credentials: 'include' });
+        const data = await res.json();
+        const tbody = document.getElementById('tableBody');
+        tbody.innerHTML = '';
+        data.slice(0, 10).forEach((item, idx) => {
+            tbody.innerHTML += `<tr>
+                <td>${idx+1}</td>
+                <td>${item.siswa}</td>
+                <td>${item.nis}</td>
+                <td>${item.kelas}</td>
+                <td>${item.mata_pelajaran}</td>
+                <td>${item.ujian}</td>
+                <td>${item.nilai}</td>
+                <td>${item.tanggal}</td>
+            </tr>`;
+        });
+    }
+    function exportToExcel() {
+        window.location.href = `${API_BASE}/api/export/nilai`;
+    }
+    loadData();
+</script>
+</body>
+</html>
