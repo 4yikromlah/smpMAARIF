@@ -1,9 +1,5 @@
 {
-  "functions": {
-    "backend/api/index.js": {
-      "maxDuration": 10
-    }
-  },
+    },
   "rewrites": [
     {
       "source": "/api/(.*)",
