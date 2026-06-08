@@ -6,7 +6,7 @@
     <title>Mapel & Kelas | CBT System</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* style asli - tidak diubah */
+        /* ===== STYLE ASLI (TIDAK DIUBAH) ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', system-ui, sans-serif; background: #eef0f5; min-height: 100vh; padding: 0 0 2rem 0; display: flex; justify-content: center; }
         .main-wrapper { width: 90%; max-width: 1200px; margin: 0 auto; margin-top: max(4px, calc(env(safe-area-inset-top, 4px) / 2)); }
@@ -25,7 +25,7 @@
         .admin-name { font-size: 0.9rem; font-weight: 700; color: #3c2e5a; }
         .logout-btn { background: linear-gradient(145deg, #e2e6ec, #f0f4fa); padding: 8px 20px; border-radius: 40px; font-size: 0.8rem; font-weight: 600; color: #5a3a7a; text-decoration: none; display: flex; align-items: center; gap: 8px; box-shadow: 8px 8px 16px #bebebe, -4px -4px 8px #ffffff; transition: 0.2s; }
         .logout-btn:hover { transform: translateY(-2px); }
-        .nav-bar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 1.5rem; }
+        .nav-bar { margin-bottom: 1.5rem; }
         .btn-back { display: inline-flex; align-items: center; gap: 8px; background: #eef0f5; padding: 0.6rem 1.5rem; border-radius: 40px; text-decoration: none; color: #4a3570; font-weight: 600; font-size: 0.85rem; box-shadow: 6px 6px 12px #bebebe, -4px -4px 8px #ffffff; }
         .btn-back:hover { transform: translateX(-5px); }
         .page-title { margin-bottom: 1.5rem; }
@@ -36,17 +36,18 @@
         .form-card h3, .table-card h3 { font-size: 1.2rem; font-weight: 700; color: #2b2b4a; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 10px; }
         .form-group { margin-bottom: 1rem; }
         .form-group input { width: 100%; padding: 12px 18px; border: none; background: #eef0f5; border-radius: 60px; font-size: 0.9rem; box-shadow: inset 3px 3px 6px #bebebe, inset -2px -2px 4px #ffffff; outline: none; }
-        .btn-submit { background: linear-gradient(145deg, #7d64a8, #5a3e7c); color: white; border: none; padding: 10px 28px; border-radius: 60px; font-weight: 600; cursor: pointer; box-shadow: 8px 8px 16px #bebebe, -4px -4px 8px #ffffff; }
+        .btn-submit { background: linear-gradient(145deg, #7d64a8, #5a3e7c); color: white; border: none; padding: 10px 28px; border-radius: 60px; font-weight: 600; cursor: pointer; box-shadow: 8px 8px 16px #bebebe, -4px -4px 8px #ffffff; width: 100%; }
         table { width: 100%; border-collapse: collapse; }
         th, td { padding: 12px 10px; text-align: left; border-bottom: 1px solid rgba(128, 100, 162, 0.15); }
         th { font-weight: 600; color: #4a3570; font-size: 0.8rem; text-transform: uppercase; }
-        .btn-delete { background: #eef0f5; padding: 5px 12px; border-radius: 40px; font-size: 0.7rem; color: #ef4444; text-decoration: none; font-weight: 600; box-shadow: 4px 4px 8px #bebebe, -2px -2px 4px #ffffff; display: inline-flex; align-items: center; gap: 5px; }
+        .btn-delete { background: #eef0f5; padding: 5px 12px; border-radius: 40px; font-size: 0.7rem; color: #ef4444; text-decoration: none; font-weight: 600; box-shadow: 4px 4px 8px #bebebe, -2px -2px 4px #ffffff; display: inline-flex; align-items: center; gap: 5px; border: none; cursor: pointer; }
         .btn-delete:hover { background: #fee2e2; }
-        @media (max-width: 860px) { .two-columns { grid-template-columns: 1fr; } .top-header { flex-direction: column; text-align: center; } .admin-area, .status-area { width: 100%; justify-content: center; } .main-wrapper { width: 95%; } .nav-bar { flex-direction: column; align-items: stretch; } .btn-back { justify-content: center; } }
+        @media (max-width: 860px) { .two-columns { grid-template-columns: 1fr; } .top-header { flex-direction: column; text-align: center; } .admin-area, .status-area { width: 100%; justify-content: center; } .main-wrapper { width: 95%; } .nav-bar { display: flex; justify-content: center; } }
     </style>
 </head>
 <body>
 <div class="main-wrapper">
+    <!-- HEADER -->
     <div class="top-header">
         <div class="logo-area"><div class="brand"><span class="cbt-logo">📚</span><div><h2>CBT System</h2><p>SMP MAARIF TEGALAMPEL</p></div></div></div>
         <div class="status-area"><div class="online-status"><span class="led online"></span><span>ONLINE</span></div></div>
@@ -56,12 +57,15 @@
         </div>
     </div>
     
+    <!-- NAVIGASI -->
     <div class="nav-bar">
         <a href="index.html" class="btn-back"><i class="fas fa-arrow-left"></i> Kembali ke Dashboard</a>
     </div>
     
+    <!-- JUDUL -->
     <div class="page-title"><h1><i class="fas fa-book-open"></i> Mata Pelajaran & Kelas</h1><p>Kelola mata pelajaran dan kelas yang tersedia</p></div>
     
+    <!-- DUA KOLOM: FORM TAMBAH MAPEL & KELAS -->
     <div class="two-columns">
         <div class="form-card">
             <h3><i class="fas fa-book"></i> Tambah Mata Pelajaran</h3>
@@ -79,89 +83,128 @@
         </div>
     </div>
     
+    <!-- DUA KOLOM: DAFTAR MAPEL & KELAS -->
     <div class="two-columns">
         <div class="table-card">
             <h3><i class="fas fa-list"></i> Daftar Mata Pelajaran</h3>
-            <table id="mapelTable">
+            <table id="tabelMapel">
                 <thead><tr><th>No</th><th>Mata Pelajaran</th><th>Aksi</th></tr></thead>
                 <tbody></tbody>
             </table>
         </div>
         <div class="table-card">
             <h3><i class="fas fa-list"></i> Daftar Kelas</h3>
-            <table id="kelasTable">
+            <table id="tabelKelas">
                 <thead><tr><th>No</th><th>Kelas</th><th>Aksi</th></tr></thead>
                 <tbody></tbody>
             </table>
         </div>
     </div>
 </div>
+
 <script>
-    const API_BASE = 'http://localhost:3000';
+    // ==================== KONFIGURASI ====================
+    const API_BASE = window.location.hostname === 'localhost' ? 'http://localhost:3000' : 'https://your-backend.vercel.app'; // GANTI DENGAN URL BACKEND ANDA
+
+    // Helper untuk mengirim request dengan credentials
+    async function request(url, options = {}) {
+        const res = await fetch(url, {
+            ...options,
+            credentials: 'include',
+            headers: { 'Content-Type': 'application/json', ...options.headers }
+        });
+        if (!res.ok) throw new Error(await res.text());
+        return res.json();
+    }
+
+    // ==================== MATA PELAJARAN ====================
     async function loadMapel() {
-        const res = await fetch(`${API_BASE}/api/mapel`, { credentials: 'include' });
-        const mapel = await res.json();
-        const tbody = document.querySelector('#mapelTable tbody');
-        tbody.innerHTML = '';
-        mapel.forEach((m, i) => {
-            tbody.innerHTML += `<tr>
-                <td>${i+1}</td>
-                <td>${m.nama_mapel}</td>
-                <td><a href="#" class="btn-delete" data-id="${m.id}"><i class="fas fa-trash-alt"></i> Hapus</a></td>
-            </tr>`;
-        });
-        document.querySelectorAll('#mapelTable .btn-delete').forEach(btn => btn.addEventListener('click', async (e) => {
-            e.preventDefault();
-            if (confirm('Hapus mata pelajaran ini?')) {
-                await fetch(`${API_BASE}/api/mapel/${btn.dataset.id}`, { method: 'DELETE', credentials: 'include' });
-                loadMapel();
-            }
-        }));
+        try {
+            const data = await request(`${API_BASE}/api/mapel`);
+            const tbody = document.querySelector('#tabelMapel tbody');
+            tbody.innerHTML = '';
+            data.forEach((m, i) => {
+                const row = tbody.insertRow();
+                row.insertCell(0).innerText = i + 1;
+                row.insertCell(1).innerText = m.nama_mapel;
+                const actionCell = row.insertCell(2);
+                const delBtn = document.createElement('button');
+                delBtn.className = 'btn-delete';
+                delBtn.innerHTML = '<i class="fas fa-trash-alt"></i> Hapus';
+                delBtn.onclick = () => hapusMapel(m.id);
+                actionCell.appendChild(delBtn);
+            });
+        } catch (err) { console.error('Gagal load mapel:', err); }
     }
+
+    async function tambahMapel(nama) {
+        await request(`${API_BASE}/api/mapel`, { method: 'POST', body: JSON.stringify({ nama_mapel: nama }) });
+        loadMapel();
+    }
+
+    async function hapusMapel(id) {
+        if (confirm('Yakin hapus mata pelajaran ini?')) {
+            await request(`${API_BASE}/api/mapel/${id}`, { method: 'DELETE' });
+            loadMapel();
+        }
+    }
+
+    // ==================== KELAS ====================
     async function loadKelas() {
-        const res = await fetch(`${API_BASE}/api/kelas`, { credentials: 'include' });
-        const kelas = await res.json();
-        const tbody = document.querySelector('#kelasTable tbody');
-        tbody.innerHTML = '';
-        kelas.forEach((k, i) => {
-            tbody.innerHTML += `<tr>
-                <td>${i+1}</td>
-                <td>${k.nama_kelas}</td>
-                <td><a href="#" class="btn-delete" data-id="${k.id}"><i class="fas fa-trash-alt"></i> Hapus</a></td>
-            </tr>`;
-        });
-        document.querySelectorAll('#kelasTable .btn-delete').forEach(btn => btn.addEventListener('click', async (e) => {
-            e.preventDefault();
-            if (confirm('Hapus kelas ini?')) {
-                await fetch(`${API_BASE}/api/kelas/${btn.dataset.id}`, { method: 'DELETE', credentials: 'include' });
-                loadKelas();
-            }
-        }));
+        try {
+            const data = await request(`${API_BASE}/api/kelas`);
+            const tbody = document.querySelector('#tabelKelas tbody');
+            tbody.innerHTML = '';
+            data.forEach((k, i) => {
+                const row = tbody.insertRow();
+                row.insertCell(0).innerText = i + 1;
+                row.insertCell(1).innerText = k.nama_kelas;
+                const actionCell = row.insertCell(2);
+                const delBtn = document.createElement('button');
+                delBtn.className = 'btn-delete';
+                delBtn.innerHTML = '<i class="fas fa-trash-alt"></i> Hapus';
+                delBtn.onclick = () => hapusKelas(k.id);
+                actionCell.appendChild(delBtn);
+            });
+        } catch (err) { console.error('Gagal load kelas:', err); }
     }
+
+    async function tambahKelas(nama) {
+        await request(`${API_BASE}/api/kelas`, { method: 'POST', body: JSON.stringify({ nama_kelas: nama }) });
+        loadKelas();
+    }
+
+    async function hapusKelas(id) {
+        if (confirm('Yakin hapus kelas ini? Semua siswa di kelas ini akan terpengaruh.')) {
+            await request(`${API_BASE}/api/kelas/${id}`, { method: 'DELETE' });
+            loadKelas();
+        }
+    }
+
+    // ==================== EVENT HANDLER FORM ====================
     document.getElementById('formMapel').addEventListener('submit', async (e) => {
         e.preventDefault();
-        const nama = document.getElementById('namaMapel').value;
-        await fetch(`${API_BASE}/api/mapel`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            credentials: 'include',
-            body: JSON.stringify({ nama_mapel: nama })
-        });
-        document.getElementById('formMapel').reset();
-        loadMapel();
+        const input = document.getElementById('namaMapel');
+        const nama = input.value.trim();
+        if (!nama) return alert('Nama mata pelajaran tidak boleh kosong');
+        try {
+            await tambahMapel(nama);
+            input.value = '';
+        } catch (err) { alert('Gagal menambah mapel: ' + err.message); }
     });
+
     document.getElementById('formKelas').addEventListener('submit', async (e) => {
         e.preventDefault();
-        const nama = document.getElementById('namaKelas').value;
-        await fetch(`${API_BASE}/api/kelas`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            credentials: 'include',
-            body: JSON.stringify({ nama_kelas: nama })
-        });
-        document.getElementById('formKelas').reset();
-        loadKelas();
+        const input = document.getElementById('namaKelas');
+        const nama = input.value.trim();
+        if (!nama) return alert('Nama kelas tidak boleh kosong');
+        try {
+            await tambahKelas(nama);
+            input.value = '';
+        } catch (err) { alert('Gagal menambah kelas: ' + err.message); }
     });
+
+    // ==================== INIT ====================
     loadMapel();
     loadKelas();
 </script>
